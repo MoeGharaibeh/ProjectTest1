@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Projects";
+
+}
+<h1><img src="https://img.icons8.com/nolan/64/group-of-projects.png" /> My Projects</h1>
+
+
+<h1>Welcome <span style="color:#e14eca">@User.Identity.Name</span>  </h1>
+<hr style="background-color: #e14eca;" />
+
+<table class="table ">
+    <thead>
+        <tr>
+  
+            <th>Title </th>
+            <th>Descrption</th>
+            <th>Developers </th>
+            <th></th>
+            <th></th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Project>)ViewBag.projects)
+        {
+            <tr>
+          
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+
+                @*<td>@project.ProjectManager.FirstName</td>*@
+
+
+
+                <td>
+                    @foreach (var item in project.ProjectDevelopers)
+                    {
+                        <span>@item.Developer.Email &nbsp;</span>
+                    }
+                </td>
+
+                <td>
+                    <a href="/TeamLeader/CreateSprint?id=@project.Id" class="btn btn-warning">Create Sprint</a>
+
+                </td>
+                <td><a href="/TeamLeader/ShowSprints?id=@project.Id" class="btn btn-primary"> Sprints</a></td>
+
+                @if (project.status == Status.Completed)
+                {
+            <td class="text-primary"> <span style="color:green;"><img src="https://img.icons8.com/plasticine/40/000000/task-completed.png" />Completed</span></td>
+                }
+                else
+                {
+                    <td class="text-danger">Pendding</td>
+
+                }
+            </tr>
+        }
+    </tbody>
+</table>

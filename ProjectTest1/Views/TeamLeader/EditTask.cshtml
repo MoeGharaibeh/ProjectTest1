@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "EditTask";
+}
+
+
+<h1>EditSprint</h1>
+
+@model ProjectTest1.Dto.EditTaskDto
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditTask">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" value="@ViewBag.Tasks.Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+       
+
+            <input type="hidden" asp-for="Id" value="@ViewBag.Tasks.Id" />
+
+      
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" value="@ViewBag.Tasks.Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="team-leader">Developer</label>
+                <select class="form-control" name="DeveloperId" >
+                    @foreach (var item in (List<ProjectDeveloper>)ViewBag.developers)
+                    {
+                        <option value="@item.DeveloperId">@item.Developer.FirstName</option>
+                    }
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ShowSprints">Back to List</a>
+</div>
+

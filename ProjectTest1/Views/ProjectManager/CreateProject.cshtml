@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@using ProjectTest1.Dto
+@using ProjectTest1.Models
+@model CreateProjectDto
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1 style="text-align:center"><i class="lni lni-write"></i> New Project</h1>
+<h2>Welcome <span style="color:#e14eca"> @User.Identity.Name </span></h2>
+
+
+<form asp-action="CreateProject" method="post" class="border border-danger px-3 py-3 border-danger ">
+    <div class="">
+
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="ProjectManagerId" value="@ViewBag.userId" />
+            <input type="hidden" asp-for="status" value="@Status.Pendding" />
+        </div>
+
+
+        <div class="form-group">
+            <label for="team-leader">Team Leader</label>
+            <select class="form-control" name="TeamLeaderId">
+                @foreach (var item in (List<TeamLeader>)ViewBag.TeamLeaders)
+                {
+                    <option class="bg-dark" value="@item.Id">@item.FirstName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="team-leader">Developers</label>
+
+            <select class="form-control custom-select" name="DeveloperIds" multiple>
+                @foreach (var item in (List<Developer>)ViewBag.Developers)
+                {
+                    <option value="@item.Id">@item.FirstName</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-warning">Create New Project</button>
+            <a href="ShowProjets" class="btn btn-danger">Back</a>
+
+        </div>
+    </div>
+
+
+
+</form>

@@ -1,0 +1,134 @@
+﻿@model ProjectTest1.Dto.RejectionDto
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{
+    ViewData["Title"] = "ShowWorks";
+
+}
+
+<h1><img src="https://img.icons8.com/nolan/64/task.png" /> WORKS</h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+<hr style="background-color: #e14eca;" />
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th>Title </th>
+            <th>Descrption</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Work>)ViewBag.works)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+                <td><a href="/Developer/GetFile?id=@project.Id" target="_blank"><i class="lni lni-download mr-2"></i>Download Work</a></td>
+                <td><a href="/TeamLeader/WorkPage?id=@project.Id"> Work Page</a></td>
+                <td><button type="button" href="/TeamLeader/WorkPage?id=@project.Id" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">Reject</button></td>
+
+
+                <td> <a onclick="ToggleWorkStatus(@project.Id)" id="ToggleStatus">Toggle Status</a></td>
+
+                @if (project.workStatus == WorkStatus.Completed)
+                {
+                    <td class="text-primary">Completed</td>
+                }
+                else if (project.workStatus == WorkStatus.Pendding)
+                {
+                    <td class="text-danger">Pendding</td>
+                }
+                else if (project.workStatus == WorkStatus.Approved)
+                {
+                    <td class="text-danger">Approved</td>
+
+                }
+                else if (project.workStatus == WorkStatus.Rejected)
+                {
+                    <td class="text-danger">Rejected</td>
+                }
+
+            </tr>
+
+
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" id="myModal" aria-hidden="true">
+                <div class="modal-dialog">
+
+
+
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header bg-dark">
+                            <h2 class="modal-title text-white" id="exampleModalLabel">Do you Want to Reject this Work ? </h2>
+
+                            <img src="https://img.icons8.com/nolan/64/disclaimer.png" />
+                        </div>
+
+                        <div class="modal-body bg-dark">
+
+                            <form asp-action="WorkPage" method="post" class="border px-3 py-3">
+                                <div id="FormIdForShow" style="display:none;" class="">
+                                    <input type="hidden" asp-for="Id" value="@project.Id" />
+
+                                    <div class="form-group">
+                                        <label asp-for="RecjectionNote" class="text-primary" style="font-size:larger">Rejection Note</label>
+                                        <textarea type="text" asp-for="RecjectionNote" class="form-control"></textarea>
+                                    </div>
+
+                                    <div class="form-group text-center">
+                                        <p class="text-white-50">Are you Sure ? </p>
+                                        <button type="submit" class="btn">Yes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <br />
+                        <div class="modal-footer bg-dark">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="FormShowBtn" type="submit" class="btn btn-danger">Reject</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $("document").ready(function () {
+        ToggleWorkStatus = function (id) {
+            alert("Onclick Done");
+            $.ajax({
+                type: "POST",
+                url: "/TeamLeader/ToggleWorkStatus",
+                data: { Id: id },
+                success: function (response) {
+                    location.reload();
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+
+</script>
+<script>
+    $("document").ready(function () {
+        $("#FormShowBtn").click(function () {
+            $("#FormIdForShow").slideToggle("slow");
+        });
+    });
+</script>
+
+

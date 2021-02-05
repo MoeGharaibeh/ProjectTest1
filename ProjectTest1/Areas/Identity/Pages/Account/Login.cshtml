@@ -1,0 +1,124 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/css/main.css">
+
+<div class="limiter">
+    <div class="container-login100" style="background-color:olivedrab;">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" id="account" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <span class="login100-form-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         width="100" height="100"
+                         viewBox="0 0 226 226"
+                         style=" fill:#000000;">
+                    <defs><linearGradient x1="113.54617" y1="142.50713" x2="112.61863" y2="50.42154" gradientUnits="userSpaceOnUse" id="color-1_GrWMGWb0ByRZ_gr1"><stop offset="0" stop-color="#000000"></stop><stop offset="0.557" stop-color="#000000"></stop><stop offset="1" stop-color="#e74c3c"></stop></linearGradient></defs>
+                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="url(#color-1_GrWMGWb0ByRZ_gr1)"><path d="M98.875,122.41667v61.20833c-14.0685,-21.95025 -28.14171,-32.89242 -49.58817,-29.52596c-15.77762,4.50588 -10.44308,17.15717 34.70983,35.61383c-60.40321,-8.34317 -96.04058,-39.89842 -77.98412,-62.58788c6.05963,17.73158 60.05479,18.60733 69.87167,8.26312c8.21604,-10.84329 -18.25892,-31.10325 -57.05088,-41.22146c20.08575,-11.28117 40.82125,-20.98504 78.46437,-21.43704c-38.31642,8.79046 -58.37862,31.10325 1.57729,49.68704zM223.97071,111.95004c-13.52233,33.81054 -87.23129,17.35492 -88.80858,4.73188c-0.904,-10.59375 31.10325,-29.07867 56.12333,-37.64313c-17.57621,-14.64762 -44.635,-21.91729 -73.57713,-22.53879c50.59104,16.90292 41.12258,34.26254 -4.70833,61.20833v47.08333c12.92437,-32.78413 56.19867,-32.55812 58.67996,-21.51237c1.99633,8.90346 -21.48883,20.01042 -46.20758,28.62667c49.58817,-9.24246 110.66938,-23.66879 98.49833,-59.95592zM114.65262,97.971c0,0 6.45983,-18.18358 -5.18387,-39.44642c-10.9045,-19.91154 3.83258,-42.375 3.83258,-42.375c0,0 -21.4135,22.08679 -11.49775,45.75558c9.91575,23.66879 1.35129,41.47571 1.35129,41.47571z"></path></g></g></svg>
+
+                </span>
+
+                <span class="login100-form-title p-b-34 p-t-27">
+                    Log in
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <input asp-for="Input.Email" class="input100" type="text" placeholder="Username">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <input asp-for="Input.Password" class="input100" type="password" placeholder="Password">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+
+                <div class="contact100-form-checkbox">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div>
+
+
+                <div class="container-login100-form-btn">
+
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                    </div>
+                </div>
+
+                <div class="text-center p-t-90">
+                    <a class="txt1" href="#">
+                        Forgot Password?
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@*<label asp-for="Input.Email"></label>
+<input asp-for="Input.Email" class="form-control" />
+<span asp-validation-for="Input.Email" class="text-danger"></span>
+
+<label asp-for="Input.Password"></label>
+<input asp-for="Input.Password" class="form-control" />
+<span asp-validation-for="Input.Password" class="text-danger"></span>
+<div class="form-group">
+    <div class="checkbox">
+        <label asp-for="Input.RememberMe">
+            <input asp-for="Input.RememberMe" />
+            @Html.DisplayNameFor(m => m.Input.RememberMe)
+        </label>
+    </div>
+</div>*@
+
+
+
+<div id="dropDownSelect1"></div>
+
+
+<!--===============================================================================================-->
+<script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor/bootstrap/js/popper.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor/daterangepicker/moment.min.js"></script>
+<script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="~/js/main.js"></script>

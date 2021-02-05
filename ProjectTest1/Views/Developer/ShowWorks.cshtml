@@ -1,0 +1,123 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model File
+
+@{
+    ViewData["Title"] = "ShowWorks";
+    var UserId = (string)@ViewBag.userId;
+}
+<h1>My WORKS</h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+<hr style="background-color: #e14eca;" />
+
+<a onclick="ToggleAllStatus('@UserId')" id="StatusBtn" class="btn btn-primary mb-4"> Submit All Works</a>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th style="font-size:1rem ; color:#e14eca "> ID </th>
+            <th style="font-size:1rem ; color:#e14eca ">Title </th>
+            <th style="font-size:1rem ; color:#e14eca ">Descrption</th>
+            <th></th>
+            <th style="font-size:1rem ; color:#e14eca ">File </th>
+            <th style="font-size:1rem ; color:#e14eca ">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Work>)ViewBag.works)
+        {
+        <tr>
+            <td>@project.Id</td>
+            <td>@project.Title</td>
+            <td>@project.Description</td>
+
+            <td>
+                <a href="/Developer/EditWork?id=@project.Id" class="btn btn-primary">EDIT</a>
+                <a href="/Developer/RemoveWork?id=@project.Id" class="btn btn-primary">Delete</a>
+                <a href="/Developer/WorkPage?id=@project.Id"> Work Page</a>
+            </td>
+
+
+
+            <td><a href="/Developer/GetFile?id=@project.Id" target="_blank"><i class="lni lni-download mr-2"></i> Download File</a></td>
+
+
+
+            @if (project.workStatus == WorkStatus.Approved)
+            {
+                <td id="toggle" style="color: #e14eca">Approved</td>
+            }
+            else if (project.workStatus == WorkStatus.Pendding)
+            {
+                <td id="toggle">Pendding</td>
+            }
+            else if (project.workStatus == WorkStatus.Completed)
+            {
+                <td id="toggle" style="color:green;">Completed</td>
+            }
+            else
+            {
+                <td id="toggle" style="color:darkred;">Rejected</td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        check();
+    });
+
+    const statusBtn = document.querySelector("#StatusBtn");
+    const status = document.querySelectorAll("#toggle");
+    const statusArray = Array.from(status);
+    let checkedStatusArray = new Array();
+    const check = function () {
+        statusArray.forEach(e => {
+            if (e.innerText.toLowerCase() == "approved") {
+                checkedStatusArray.push(true)
+            }
+            if (e.innerText.toLowerCase() != "approved") {
+                return false;
+            }
+        });
+        if (statusArray.length === checkedStatusArray.length) {
+            displayToggleAll();
+
+        }
+    };
+    const displayToggleAll = function () {
+        statusBtn.style.display = "block";
+        ToggleAllStatus();
+    }
+    const ToggleAllStatus = function (id) {
+        $.ajax({
+            type: "POST",
+            url: "/Developer/ToggleAllStatus",
+            data: { Id: id },
+            success: function (response) {
+                alert("DONE");
+                statusBtn.addEventListener('click', () => {
+                    statusArray.forEach(e => {
+                        location.reload();
+
+                    });
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    };
+
+</script>
+

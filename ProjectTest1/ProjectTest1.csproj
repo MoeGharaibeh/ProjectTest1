@@ -1,0 +1,234 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-ProjectTest1-B22AA0B3-1D31-46F5-B568-668ED4F6066D</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210117212805_PullStack.cs" />
+    <Compile Remove="Data\Migrations\20210117212805_PullStack.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210118185701_thelastmigration.cs" />
+    <Compile Remove="Data\Migrations\20210118185701_thelastmigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\ProjectManager\Detials.cshtml" />
+    <None Include="Views\ProjectManager\Edit.cshtml" />
+    <None Include="Views\ProjectManager\Remove.cshtml" />
+    <None Include="Views\Project\AllProjects.cshtml" />
+    <None Include="Views\Project\Create.cshtml" />
+    <None Include="Views\Project\Detials.cshtml" />
+    <None Include="Views\Project\Edit.cshtml" />
+    <None Include="Views\Project\Remove.cshtml" />
+    <None Include="Views\TeamLeader\Details.cshtml" />
+    <None Include="Views\TeamLeader\Edit.cshtml" />
+    <None Include="Views\TeamLeader\Remove.cshtml" />
+    <None Include="wwwroot\assets\css\black-dashboard.css.map" />
+    <None Include="wwwroot\assets\fonts\nucleo.woff2" />
+    <None Include="wwwroot\assets\js\black-dashboard.js" />
+    <None Include="wwwroot\assets\js\black-dashboard.js.map" />
+    <None Include="wwwroot\assets\js\black-dashboard.min.js" />
+    <None Include="wwwroot\assets\js\core\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\core\jquery.min.js" />
+    <None Include="wwwroot\assets\js\core\popper.min.js" />
+    <None Include="wwwroot\assets\js\plugins\bootstrap-notify.js" />
+    <None Include="wwwroot\assets\js\plugins\chartjs.min.js" />
+    <None Include="wwwroot\assets\js\plugins\perfect-scrollbar.jquery.min.js" />
+    <None Include="wwwroot\assets\scss\black-dashboard.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\bootstrap-grid.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\bootstrap-reboot.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\bootstrap.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_alert.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_background-variant.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_badge.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_border-radius.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_box-shadow.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_breakpoints.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_caret.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_clearfix.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_deprecate.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_float.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_forms.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_gradients.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_grid-framework.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_grid.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_hover.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_image.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_list-group.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_lists.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_nav-divider.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_pagination.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_reset-text.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_resize.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_screen-reader.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_size.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_table-row.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_text-emphasis.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_text-hide.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_text-truncate.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_transition.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\mixins\_visibility.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_align.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_background.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_borders.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_clearfix.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_display.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_embed.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_flex.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_float.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_overflow.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_position.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_screenreaders.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_shadows.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_sizing.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_spacing.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_stretched-link.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_text.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\utilities\_visibility.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\vendor\_rfs.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_alert.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_badge.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_breadcrumb.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_button-group.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_card.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_carousel.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_close.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_code.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_custom-forms.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_dropdown.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_forms.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_functions.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_grid.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_images.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_input-group.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_jumbotron.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_list-group.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_media.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_mixins.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_modal.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_nav.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_navbar.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_pagination.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_popover.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_print.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_progress.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_reboot.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_root.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_spinners.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_tables.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_toasts.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_tooltip.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_transitions.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_type.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_utilities.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\bootstrap\_variables.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\cards\_card-chart.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\cards\_card-map.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\cards\_card-plain.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\cards\_card-task.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\cards\_card-user.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\opacity.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_alert.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_background-variant.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_badges.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_dropdown.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_forms.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_icon.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_inputs.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_modals.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_page-header.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_popovers.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_vendor-prefixes.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\mixins\_wizard.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_backgrounds.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_floating.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_helper.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_position.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_shadows.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_sizing.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_spacing.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_text.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\utilities\_transform.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\vendor\_plugin-animate-bootstrap-notify.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\vendor\_plugin-perfect-scrollbar.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_alerts.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_card.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_checkboxes-radio.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_dropdown.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_example-pages.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_fixed-plugin.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_footer.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_forms.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_functions.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_images.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_input-group.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_misc.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_mixins.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_modal.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_navbar.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_rtl.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_sidebar-and-main-panel.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_tables.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_type.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_utilities.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_variables.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\custom\_white-content.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\plugins\_plugin-perfect-scrollbar.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\_buttons.scss" />
+    <None Include="wwwroot\assets\scss\black-dashboard\_typography.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="NPOI" Version="2.5.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>

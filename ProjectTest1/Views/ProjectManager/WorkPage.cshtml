@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "WorkPage";
+}
+
+<h1>WorkPage</h1>
+
+@model ProjectTest1.Dto.RejectionDto
+
+@{
+    ViewData["Title"] = "WorkPage";
+    var work = (Work)ViewBag.works;
+}
+
+<h1>WorkPage</h1>
+
+
+@*<table class="table ">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th>Title </th>
+            <th>Descrption</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Work>)ViewBag.works)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+                <td><a href="/Developer/GetFile?id=@project.Id" target="_blank">Download Work</a></td>
+                <td><a href="/ProjectManager/WorkPage?id=@project.Id">Work page</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+<button id="FormShowBtn" type="submit" class="btn btn-green">Reject</button>
+
+<form asp-action="WorkPage" method="post" class="border px-3 py-3">
+    <div id="FormIdForShow" style="display:none;" class="">
+        <input type="hidden" asp-for="Id" value="@work.Id" />
+
+        <div class="form-group">
+            <label asp-for="RecjectionNote">Rejection Note</label>
+            <input type="text" asp-for="RecjectionNote" class="form-control" placeholder="Please Enter Project Name">
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-green">Reject</button>
+        </div>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+    $("document").ready(function () {
+        $("#FormShowBtn").click(function () {
+            $("#FormIdForShow").slideToggle("slow");
+        });
+    });
+</script>

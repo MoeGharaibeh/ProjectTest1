@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "ShowWorks";
+}
+
+<h1><img src="https://img.icons8.com/nolan/64/task.png" /> Develoeprs Assignments</h1>
+
+<h2>Welcome <span style="color:#e14eca"> @User.Identity.Name </span></h2>
+<hr style="background-color: #e14eca;" />
+
+
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th>Title </th>
+            <th>Descrption</th>
+            <th>File</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Work>)ViewBag.works)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+                <td><a href="/Developer/GetFile?id=@project.Id" target="_blank"><i class="lni lni-download mr-2"></i> Download File</a></td>
+   
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+

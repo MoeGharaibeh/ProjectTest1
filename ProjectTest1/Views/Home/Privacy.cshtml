@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+
+
+    $("document").ready(function () {
+      
+            alert("It is finaly work Done");
+            $.ajax({
+       
+                url: "/api/ProjectManagerAPI/ShowProjets",
+                contentType: "application/json",
+                dataType:"json",
+                success: function (response) {
+                    alert("success")
+                },
+              
+                error: function () {
+                    alert("Error");
+                }
+            });
+        
+    });
+</script>

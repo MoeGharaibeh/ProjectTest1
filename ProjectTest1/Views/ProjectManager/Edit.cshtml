@@ -1,0 +1,74 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model ProjectTest1.Dto.EditProjectDto
+
+@using ProjectTest1.Models
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Project</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input type="text" asp-for="Title" value="@ViewBag.project.Title" class="form-control">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input class="form-control" asp-for="Description" value="@ViewBag.project.Description" id="Description" rows="3" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="team-leader">Team Leader</label>
+                <select class="form-control" name="TeamLeaderId">
+                    <option class="bg-dark" value="0">Select a TeamLeader</option>
+                    @foreach (var item in (List<TeamLeader>)ViewBag.TeamLeaders)
+                    {
+
+                        <option class="bg-dark" value="@item.Id">@item.FirstName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team-leader">Developers</label>
+
+                <select class="form-control custom-select" name="DeveloperIds" multiple>
+                    @foreach (var item in (List<Developer>)ViewBag.Developers)
+                    {
+                        <option value="@item.Id">@item.FirstName</option>
+                  
+                    }
+                </select>
+            </div>
+         
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="ShowProjets" class="btn btn-danger">Back</a>
+            </div>
+    
+               
+          
+        </form>
+    </div>
+</div>
+
+

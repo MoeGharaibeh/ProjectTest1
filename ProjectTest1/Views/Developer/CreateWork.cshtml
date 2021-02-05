@@ -1,0 +1,49 @@
+﻿
+@model ProjectTest1.Dto.CreateWorkDto
+
+
+@{
+    ViewData["Title"] = "CreateWork";
+
+}
+
+
+<h1>Add Work</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateWork" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+
+
+            <input type="hidden" asp-for="DeveloperId" value="@ViewBag.userId" />
+            <input type="hidden" asp-for="SprintTaskId" value="@ViewBag.taskId" />
+
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-control">
+                <label>Upload File </label>
+                <input type="file" name="Thefile" value="" class="form-control bg-primary" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+                <a class="btn btn-primary" href="ShowProjects">Back To Projects</a>
+            </div>
+        </form>
+    </div>
+</div>
+

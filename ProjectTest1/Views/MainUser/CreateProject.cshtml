@@ -1,0 +1,58 @@
+﻿@*@using ProjectTest1.Dto
+@using ProjectTest1.Models
+@model CreateProjectDto
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{ ViewData["Title"] = "Create"; }
+
+<h2>Welcome <span style="color:#e14eca"> @User.Identity.Name </span></h2>
+
+<form asp-action="Create" method="post" class="border px-3 py-3">
+    <div class="">
+        <div class="form-group">
+            <label asp-for="Title">Project Name</label>
+            <input type="text" asp-for="Title" class="form-control" placeholder="Please Enter Project Name">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Project Name</label>
+            <input type="text" asp-for="Description" class="form-control" placeholder="Please Enter Project Name">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" asp-for="ProjectManagerId" value="@ViewBag.userId" />
+            <input type="hidden" asp-for="status" value="@Status.Pendding" />
+        </div>
+
+
+        <div class="form-group">
+            <label for="team-leader">Team Leader</label>
+            <select class="form-control" name="TeamLeaderId">
+                @foreach (var item in (List<TeamLeader>)ViewBag.TeamLeaders)
+                {
+    <option value="@item.Id">@item.FirstName</option>
+}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="team-leader">Developers</label>
+
+            <select class="form-control custom-select" name="DeveloperIds" multiple>
+                @foreach (var item in (List<Developer>)ViewBag.Developers)
+                {
+                    <option value="@item.Id">@item.FirstName</option>
+                    }
+            </select>
+        </div>
+
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-green">X</button>
+        </div>
+    </div>
+
+
+
+</form>*@

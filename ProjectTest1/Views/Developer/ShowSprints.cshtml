@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "ShowSprints";
+}
+<a href="/Developer/ShowProjects?" class="btn btn-danger mb-5 "><i class="lni lni-arrow-left pr-2"></i>  Back</a>
+
+<h1>My Sprints</h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+
+<hr style="background-color: #e14eca;" />
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th style="font-size:1rem ; color:#e14eca ">ID </th>
+            <th style="font-size:1rem ; color:#e14eca ">Title </th>
+            <th style="font-size:1rem ; color:#e14eca ">Descrption</th>
+            <th style="font-size:1rem ; color:#e14eca ">Start Date</th>
+            <th>End Date</th>
+            <th style="font-size:1rem ; color:#e14eca ">Status</th>
+            <th> </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Sprint>)ViewBag.sprint)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+                <td>@project.StartDate  </td>
+                <td>  @project.EndDate</td>
+                <td>@project.status</td>
+
+
+                <td>  <a href="/Developer/ShowTaskes?id=@project.Id" class="btn btn-primary">Tasks</a></td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

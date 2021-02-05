@@ -1,0 +1,134 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model SprintTask
+
+@{
+    ViewData["Title"] = "ShowTasks";
+
+}
+
+<h1><img src="https://img.icons8.com/nolan/64/task.png" /> Tasks</h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+<hr style="background-color: #e14eca;" />
+<br />
+<table class="table ">
+    <thead>
+        <tr>
+            <th> ID </th>
+            <th>Title </th>
+            <th>Descrption</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<SprintTask>)ViewBag.tasks)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+
+                <td>
+                    <a href="/TeamLeader/EditTask?id=@project.Id" class="btn btn-primary">Edit</a>
+
+                    <a href="/TeamLeader/ShowWorks?taskId=@project.Id&&id=@project.DeveloperId" class="btn btn-outline-success">Show Works</a>
+                    @*<a onclick="TaskStatus(@project.Id)" id="ToggleStatus">Toggle Status</a>*@
+                </td>
+                <td>
+                    <button onclick="TaskStatus(@project.Id)" id="ToggleStatus" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal2">Status</button>
+                </td>
+
+                @if (project.status == Status.Completed)
+                {
+                    <td ><span style="color:green">Completed</span></td>
+                }
+                else
+                {
+                    <td class="text-danger">Pendding</td>
+
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+@* *********************     *@
+@*Model*@
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Status Have been Updated.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        TaskStatus = function (Id) {
+            alert("It is finaly work Done");
+            $.ajax({
+                type: "POST",
+                url: "/TeamLeader/TaskStatus",
+                data: { id: Id },
+                success: function (response) {
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+
+</script>
+
+
+@*<script>
+
+        $("document").ready(function () {
+            $("#SubmitBtn").click(function () {
+
+                $.ajax({
+
+                    url: "TeamLeader/TaskStatus",
+                    data: { SprintTaskId: @Model.Id},
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data) {
+
+                        if (data == "YES") {
+
+                            alert('Great !\n All works has been completed.\n Your Task completed successfully.');
+                        }
+                        else {
+
+                            alert('Not all works are Approved !!!');
+                        }
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            });
+        });
+    </script>*@

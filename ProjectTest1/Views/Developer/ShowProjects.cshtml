@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h1><img src="https://img.icons8.com/nolan/64/project.png" />My Project</h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+<hr style="background-color: #e14eca;" />
+
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            @*<th>Project ID </th>*@
+            <th style="font-size:1rem ; color:#e14eca ">Title </th>
+            @*<th>Descrption</th>
+                <th>The Manager For this project </th>*@
+            <th></th>
+            <th style="font-size:1rem ;color:#e14eca ">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<ProjectDeveloper>)ViewBag.projects)
+        {
+            <tr>
+
+                @*<td>@project.Project.Id</td>*@
+                <td>@project.Project.Title</td>
+                @*<td>@project.Project.Description</td>*@
+                @*<td>@project.Project.ProjectManager.FirstName @project.Project.ProjectManager.LastName</td>*@
+
+
+
+                <td>
+
+                    <a href="/Developer/ShowSprints?id=@project.Project.Id" class="btn btn-primary">My Sprints</a>
+                    <a class="btn btn-primary" id="theTaskGiveBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@project.ProjectId">
+                        Details
+                    </a>
+
+
+
+
+
+                </td>
+
+                @if (project.Project.status == Status.Completed)
+                {
+                    <td class="text-primary">Completed</td>
+                }
+                else
+                {
+                    <td class="text-danger">Pendding</td>
+
+                }
+            </tr>
+
+
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog bg-dark" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark">
+                            <h2 class="modal-title text-white" id="exampleModalLabel"><img src="https://img.icons8.com/color/48/000000/bmo.png" /> Detials</h2>
+                            <br /><br /><hr />
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body bg-dark">
+                            <form class="bg-dark">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label text-primary">Project ID :</label>
+                                    <label for="recipient-name" class="col-form-label ">@project.ProjectId</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label text-primary">Project Description :</label>
+                                    <label for="recipient-name" class="col-form-label">@project.Project.Description</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label text-primary">Developers Emails : </label>
+                                    <label for="recipient-name" class="col-form-label">
+                                        @foreach (var developers in @project.Project.ProjectDevelopers)
+                                        {
+                                            <span>@developers.Developer.Email</span>
+                                        }
+
+                                    </label>
+
+                                </div>
+                                <div class="form-group bg-dark">
+                                    <label for="recipient-name" class="col-form-label text-primary">Manager Name :</label>
+                                    <label for="recipient-name" class="col-form-label">@project.Project.ProjectManager.FirstName   @project.Project.ProjectManager.LastName</label>
+
+                                </div>
+                        
+                            </form>
+                   
+                        </div>
+
+                        <div class="bg-dark text-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New Task to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
+
+

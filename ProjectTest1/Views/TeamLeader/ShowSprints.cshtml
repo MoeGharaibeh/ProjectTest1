@@ -1,0 +1,166 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Projects";
+
+}
+
+
+
+<h1> <img src="https://img.icons8.com/nolan/64/time.png" /> Sprints </h1>
+<h2>Welcome <span class="" style="color:#e14eca"> @User.Identity.Name</span></h2>
+<hr style="background-color: #e14eca;" />
+<table class="table ">
+    <thead>
+        <tr>
+            
+            <th>Title </th>
+
+            <th> </th>
+            <th> </th>
+            <th> </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in (List<Sprint>)ViewBag.sprints)
+        {
+        <tr>
+         
+            <td>@project.Title</td>
+       
+            <td>@project.StartDate</td>
+            <td>@project.EndDate</td>
+
+            <td>
+                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Detials</button>
+            </td>
+            <td>
+
+                @*<a onclick="SprintStatus(@project.Id)" id="ToggleStatus">Toggle Status</a>*@
+                <button onclick="SprintStatus(@project.Id)" id="ToggleStatus" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal2">Status</button>
+            </td>
+
+
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" id="myModal" aria-hidden="true">
+                <div class="modal-dialog">
+
+
+
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header bg-dark">
+                            <h2 class="modal-title text-white" id="exampleModalLabel"> <img src="https://img.icons8.com/nolan/64/business-contact.png" /> Detials</h2>
+                            <br /><br /><hr />
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body bg-dark">
+                    
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Project ID :</label>
+                                    <label for="recipient-name" class="col-form-label text-white">@project.Id</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Project Title :</label>
+                                    <label for="recipient-name" class="col-form-label text-white">@project.Title</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Project Description :</label>
+                                    <label for="recipient-name" class="col-form-label text-white">@project.Description</label>
+                                </div>
+
+                                <div>
+
+                                    <a href="/TeamLeader/CreateTask?id=@project.Id" class="btn btn-dark">Create Task </a>
+                                    <a href="/TeamLeader/ShowTasks?id=@project.Id" class="btn btn-primary"> Tasks  </a>
+                                </div>
+                  
+                        </div>
+                        <br />
+                        <div class="modal-footer bg-dark">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="/TeamLeader/EditSprint?id=@project.Id" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Modal2 -->
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Status Have been Updated.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            @if (project.status == Status.Completed)
+            {
+                <td class="text-primary"> <span style="color:green;">Completed</span> </td>
+            }
+            else
+            {
+                <td class="text-danger">Pendding</td>
+
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        SprintStatus = function (Id) {
+
+            $.ajax({
+                type: "POST",
+                url: "/TeamLeader/SprintStatus",
+                data: { id: Id },
+                success: function (response) {
+                    response.console();
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+</script>

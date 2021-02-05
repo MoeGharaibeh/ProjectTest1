@@ -1,0 +1,88 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<h1> <i class="fas fa-user-shield"></i> Admin Control Panel</h1>
+<h2>Welcome <span style="color:#e14eca"> @User.Identity.Name </span></h2>
+@*<hr style="background-color: #e14eca;" />*@
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+<a href="/MainUser/CreateManager" class="btn btn-primary mb-4"><span>Add Manager</span></a>
+<a href="/MainUser/CreateTeamLeader" class="btn btn-primary mb-4">Add TeamLeader</a>
+<a href="/MainUser/CreateDeveloper" class="btn btn-primary mb-4">Add Developer</a>
+<table class="table ">
+    <thead>
+        <tr>
+            <th>employeers Name</th>
+            <th>Postion</th>
+            <th></th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+
+        @foreach (var item in (List<ProjectManager>)ViewBag.Managers)
+        {
+            <tr>
+
+                <td>
+                    <span>@item.FirstName @item.LastName </span>
+                </td>
+                <td>Project Manager</td>
+
+                <td>
+                    <a href="/MainUser/EditManager?id=@item.Id" class="btn btn-primary">Edit</a>
+                    @*<a href="/MainUser/RemoveManager?id=@item.Id" class="btn btn-primary">Delete</a>*@
+                    <a href="/MainUser/ManagerDetials?id=@item.Id" class="btn btn-primary">Details</a>
+                </td>
+            </tr>
+
+        }
+
+        @foreach (var item in (List<TeamLeader>)ViewBag.TeamLeaders)
+        {
+            <tr>
+
+                <td>
+                    <span>@item.FirstName @item.LastName </span>
+                </td>
+                <td>TeamLeader</td>
+                <td>
+                    <a href="/MainUser/EditTeamLeader?id=@item.Id" class="btn btn-primary">Edit</a>
+                    @*<a href="/MainUser/RemoveLeader?id=@item.Id" class="btn btn-primary">Delete</a>*@
+                    <a href="/MainUser/DetialsLeader?id=@item.Id" class="btn btn-primary">Details</a>
+                </td>
+
+            </tr>
+
+        }
+
+
+
+        @foreach (var item in (List<Developer>)ViewBag.Developers)
+        {
+            <tr>
+
+
+                <td>
+                    <span>@item.FirstName @item.LastName </span>
+                </td>
+
+                <td>Developers</td>
+                <td>
+                    <a href="/MainUser/EditDeveloper?id=@item.Id" class="btn btn-primary">Edit</a>
+                    @*<a href="/MainUser/RemoveDeveloper?id=@item.Id" class="btn btn-primary">Delete</a>*@
+                    <a href="/MainUser/DetialsDeveloper?id=@item.Id" class="btn btn-primary">Details</a>
+                </td>
+            </tr>
+
+
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "WorkPage";
+}
+
+<h1>WorkPage DEvelopers Page</h1>
+
+@model ProjectTest1.Dto.RejectionDto
+
+@{
+    ViewData["Title"] = "WorkPage";
+    var work = (Work)ViewBag.works;
+}
+
+<h1>WorkPage</h1>
+
+<div id="DivId">
+
+</div>
+
+
+<button id="FormShowBtn" type="submit" class="btn btn-green">Reject</button>
+
+
+
+<form asp-action="WorkPage" method="post" class="border px-3 py-3">
+    <div id="FormIdForShow" style="display:none;" class="">
+        <input type="hidden" asp-for="Id" value="@work.Id" />
+
+        <div class="form-group">
+            <label asp-for="RecjectionNote">Rejection Note</label>
+            <textarea type="text" asp-for="RecjectionNote" class="form-control" placeholder="Please Enter Project Name"></textarea>
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-green">Reject</button>
+        </div>
+    </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+    $("document").ready(function () {
+        $("#FormShowBtn").click(function () {
+            $("#FormIdForShow").slideToggle("slow");
+        });
+    });
+</script>
+
+
+
+<script>
+    $("document").ready(function () {
+
+          $.ajax({
+            url:"https://localhost:44399/api/WorkAPI/GetWork?id=@work.Id",
+            contentType: "application/json",
+            method:"GET",
+            dataType: "json",
+            success: function (res) {
+               
+                var html = `<p>the title id ${res.title} </p>`;
+                $("#DivId").append(html);
+         
+             
+            },
+            error: function (res) {
+         
+                alert(res.responseText);
+            }
+
+        });
+    });
+</script>
